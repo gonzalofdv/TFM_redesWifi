@@ -14,3 +14,7 @@ empresas, comercios, hogares e incluso en lugares públicos, siendo utilizados p
 
 Redes inalámbricas, redes WiFi, WEP, WPA, WPA2, WPA3, Airgeddon, aircrack-ng, Raspberry
 Pi, Kali Linux.
+
+## Documentos
+
+El trabajo completo se encuentra en el archivo [Memoria TFM](TFM_Gonzalo_Figueroa_del_Val.pdf)
