@@ -17,4 +17,4 @@ Pi, Kali Linux.
 
 ## Documentos
 
-El trabajo completo se encuentra en el archivo [Memoria TFM](TFM_Gonzalo_Figueroa_del_Val.pdf)
+Entre los archivos incluidos en este repositorio se pueden encontrar la [memoria del TFM](TFM_Gonzalo_Figueroa_del_Val.pdf), la [presentación](Defensa_TFM.pdf) utilizada en la defensa, un [Manual de instalación de Kali Linux en Raspberry Pi](manual_instalacion.md) y un [resumen de los ataques realizados](ataques.md).

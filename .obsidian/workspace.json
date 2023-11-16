@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "ataques.md",
                 "mode": "source",
                 "source": false
               }
@@ -98,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "ataques.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "ataques.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "ataques.md"
               }
             }
           }
@@ -161,10 +161,10 @@
   },
   "active": "34c43f9e9dbfbe78",
   "lastOpenFiles": [
-    "Instalación de Kali Linux en Raspberry Pi.md",
-    "images/rasp_02.png",
-    "Resumen del proyecto.md",
     "README.md",
+    "manual_instalacion.md",
+    "images/rasp_02.png",
+    "ataques.md",
     "images/external_authz.svg.md",
     "images/rasp_06.png",
     "images/rasp_05.png",
