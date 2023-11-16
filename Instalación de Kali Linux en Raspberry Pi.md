@@ -1,3 +1,5 @@
+# Instalación de Kali Linux en Raspberry Pi
+
 Existen varios métodos para realizar la instalación del Sistema Operativo (SO) Kali Linux en la
 Raspberry Pi pero en este caso se hará uso de la herramienta *Raspberry Pi Imager*, descargada
 de la [web oficial de Raspberry Pi](https://www.raspberrypi.com/software/). Una vez instalada, será necesario disponer de una tarjeta de
@@ -7,7 +9,7 @@ y servirá de almacenamiento.
 Así, una vez instalada la herramienta, al iniciarla se encuentra un simple menú como el que
 muestra la siguiente Figura:
 
-![rasp_01](rasp_01.png)
+![rasp_01](images/rasp_01.png)
 
 Eligiendo la opción "*Choose OS*", será necesario especificar la distribución a instalar, en este
 caso, debermos elegir "*Other specific-purpose OS*", "*Kali Linux 2 "Raspberry Pi 2 (v1.2), 3, 4 and
