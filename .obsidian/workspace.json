@@ -171,8 +171,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "34c43f9e9dbfbe78",
+  "active": "b0198e92f0dbc5bc",
   "lastOpenFiles": [
+    "images/crunch.png",
+    "images/aircrack.png",
+    "images/wpacrack.png",
+    "images/wpaattack.png",
+    "images/wpadiag.png",
+    "images/aplist.png",
+    "images/apconfig.png",
     "images/deauth_attack.png",
     "images/deauth_diag.png",
     "images/airgeddon_menu.png",
@@ -183,11 +190,6 @@
     "manual_instalacion.md",
     "images/rasp_02.png",
     "images/external_authz.svg.md",
-    "images/rasp_06.png",
-    "images/rasp_05.png",
-    "images/rasp_04.png",
-    "images/rasp_03.png",
-    "images/rasp_01.png",
     "images",
     "Nueva carpeta"
   ]
