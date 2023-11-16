@@ -2,8 +2,6 @@
 
 Trabajo de Fin de Máster para la Universidad Europea de Madrid en el Máster Universitario en Seguridad de las Tecnologías de la Información y las Comunicaciones. Curso 2022-2023
 
----------------------------------------
-
 ## Resumen del proyecto
 
 Las redes de comunicaciones, en especial las redes inalámbricas, entre las que destacan las Wireless Local Area Network (WLAN), están presentes en prácticamente cualquier lugar donde se

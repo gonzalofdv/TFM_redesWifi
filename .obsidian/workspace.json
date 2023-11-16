@@ -44,7 +44,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "ataques.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "ataques.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "ataques.md"
               }
             }
           }
@@ -171,11 +171,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "1899d54f6a71f4c6",
+  "active": "34c43f9e9dbfbe78",
   "lastOpenFiles": [
-    "entorno.md",
+    "images/deauth_attack.png",
+    "images/deauth_diag.png",
+    "images/airgeddon_menu.png",
+    "images/airgeddon_menu.png.md",
     "ataques.md",
     "README.md",
+    "entorno.md",
     "manual_instalacion.md",
     "images/rasp_02.png",
     "images/external_authz.svg.md",
