@@ -92,6 +92,74 @@ De igual manera, si se dispone de la captura de tráfico con el paquete PMKID ca
 
 ## Evil Twin
 
+Este ataque tiene como principal finalidad falsificar un punto de acceso legítimo que permita
+la conexión de víctimas para así obtener información sensible o confidencial, ya sea del propio cliente o de la red.
+Accediendo a la opción ’*Evil Twin attacks menu*’, se mostrará un menú. Con las opciones que aparecen, se plantean dos ataques diferentes, un Evil Twin con portal cautivo y otro aplicando el sniffing de tráfico y la captura de credenciales mediante bettercap.
 
+![eviltwin](images/eviltwin.png)
+
+### Evil Twin con portal cautivo
+
+Muchos puntos de acceso situados en cafeterías, centros comerciales, u otros lugares públicos cuentan con un portal cautivo en el que iniciar sesión con una contraseña o unos credenciales, por
+lo que la finalidad de este ataque es simular un punto de acceso idéntico a otro legítimo en el que
+aplicar un portal cautivo, para que un cliente se autentique, introduzca la clave y, dado un handshake previamente capturado, verificar si esta clave es correcta. Una diagrama del funcionamiento de este ataque se puede ver a continuación:
+
+![evil2](images/evil2.png)
+
+Para realizar este ataque, una vez elegida la opción ’Evil Twin AP attack with captive portal’, se ofrece elegir entre 3 métodos de deautenticación: amok mdk4, aireplay o WIDS/WIPS/WDS Confusion. Esto se debe a que para forzar la conexión de los clientes ya conectados al AP legítimo y evitar que a clientes nuevos les aparezcan dos redes iguales es recomendable (y necesario) realizar un ataque de deautenticación contra el AP legítimo provocando una denegación de servicio.
+
+Seleccionado el método de autenticación, será necesario, si no se cuenta con uno ya, disponer de un handshake de la red objetivo, de forma que la contraseña introducida por la víctima pueda ser comprobada y evitar errores humanos. En este caso, aunque es posible especificar uno de los handshakes capturados en ataques previos, se plantea realizar todo un proceso completo, por lo que, estableciendo un tiempo de espera máximo, se realiza un ataque de deautenticación y captura de handshake, para posteriormente, especificar un fichero de salida para la captura de la contraseña e iniciar el ataque. Todo este proceso descrito se puede ver reflejado en la siguiente Figura:
+
+![evil3](images/evil3.png)
+
+Handshake capturado y preparado, airgeddon permite establecer el portal cautivo en 13 diferentes
+idiomas, entre los que se encuentra el español. Además, permite establecer un portal cautivo avanzado detectando el fabricante del AP e implantando la misma apariencia en el portal cautivo
+para una mayor fiabilidad por parte de la víctima. Como se puede observar, la  herramienta ha detectado el AP víctima como ’Comtrend’ para mostrar el portal cautivo avanzado.
+Aún así, airgeddon también permite incluir portales cautivos personalizados por el atacante para adaptarse a las necesidades del ataque.
+
+![evil4](images/evil4.png)
+
+Iniciado el ataque, se abren 6 ventanas o componentes diferentes. Con apoyo en la Figura que se puede ver más abajo, la ventana ’AP’ configura el punto de acceso y muestra el estado de la interfaz de red y los procesos de autenticación. El terminal ’DHCP’ se encarga de asignar una IP a los nuevos dispositivos conectados. Siguiendo en la misma línea, el terminal ’Deauth’ se encarga de mantener el ataque que deniega el servicio del AP legítimo. El ’webserver’ levanta el portal cautivo. La ventana ’DNS’ se encarga de resolver las direcciones requeridas ya que estas pueden ser modificadas para una redirección maliciosa. Por último, la ventana ’Control’ informa del AP que se está simulando, de los clientes asociados, del tiempo levantado y de si se ha capturado la contraseña, entre otras cosas.
+
+![evil5](images/evil5.png)
+
+Así, utilizando un segundo dispositivo, en este caso un teléfono móvil, que se encuentra conectado a la red, sufre una desconexión momentánea y en unos segundos salta el portal cautivo donde la víctima introduce la contraseña de su punto de acceso y que, introduciéndola correctamente puede hacerle no sospechar de nada ya que sigue contando con conexión a Internet que proporciona el ataque Evil Twin.
+
+![evil6](images/evil6.png)
+
+Además, en la ventana de control, aparecerá la contraseña capturada por el portal cautivo, consiguiendo con esto acceso a la red objetivo para realizar acciones de post explotación.
+
+### Evil Twin con sniffer de tráfico
+
+Ejecutada la primera variante de Evil Twin, es posible afinar más este ataque aplicando un sniffer de tráfico acompañado de bettercap para intentar capturar credenciales en las interacciones de la víctima conectada al punto de acceso.
+
+![evil7](images/evil7.png)
+
+Así, los pasos previos a iniciar el ataque, serán idénticos al caso anterior, por lo que, mediante interacción con airgeddon, se selecciona la red objetivo, las interfaces de red a utilizar (una para denegación de servicio y otra para hacer de punto de acceso) y el fichero de salida donde se almacenarán las credenciales en caso de conseguir capturar alguna.
+
+Al iniciar el ataque, aparecen las mismas ventanas que en el caso previo, a excepción de la ventana ’DNS’ y la ’webserver’, pero en su lugar, se muestra una nueva ventana dond se muestra el sniffer. Con la deautenticación en curso, el usuario consigue conexión, sin darse cuenta al nuevo AP. Esto se debe a que el nuevo punto de acceso no cuenta con contraseña, pero al ser idéntico y el legítimo dejar de estar disponible, el dispositivo móvil víctima se conecta de manera automática sin hacer saltar las alarmas.
+
+Con la víctima conectada al punto de acceso malicioso, solo queda esperar a que se realice alguna acción que cuente con un acceso por credenciales para que bettercap pueda capturar estos. La Figura que aparece más abajo muestra cómo el sniffer monitorea las peticiones web, mostrando en colores destacados los credenciales capturado durante la escucha, que además, son exportados al finalizar el ataque a un fichero de texto.
+
+![evil8](images/evil8.png)
 ## Ataque a WPS y Pixie Dust
 
+WPS supone más inconvenientes que ventajas cuando se trata de seguridad y la mejor opción es mantener desactivada esta característica en el AP. Aún así, es común encontrarlo activado por defecto con un PIN de serie, lo que deriva en un fácil objetivo a atacantes y cómo no, airgeddon cuenta con diferentes opciones para atacar esta característica que se pueden consultar en el menú del ataque al que se accede seleccionando la opción ’WPS attacks menu’ en el menú principal de la herramienta.
+
+![wps1](images/wps1.png)
+
+Entre las opciones ofrecidas, se encuentran distintas variantes para las herramientas reaver y bully. Entre estas variantes se encuentran el seleccionar un PIN concreto (porque sea previamente conocido, para realizar pruebas o simplemente por creer conocerlo), realizar el ataque Pixie Dust, realizar fuerza bruta o atacar dados una serie de PINs obtenidos de bases de datos.
+
+Esta última opción suele realizarse antes de intentar una enumeración completa de todas las combinaciones posibles mediante fuerza bruta ya que permite realizar intentos dados unos PINs probables de ser correctos ya que se han obtenido a partir de bases de datos de PINs WPS conocidos de fabricantes específicos y por algoritmos de generación de PINs (como ComputePIN,
+EasyBox o Arcadyan, todos incluidos en airgeddon). Estos podrán ser consultados en la opcion ’*Offline PIN generation using algorithms and database*’, cuyo menú se muestra a continuación, dónde es posible observar cómo entre los PINs ofrecidos por la base de datos, se encuentra el configurado en el AP, por lo que atacar mediante este método debería ofrecer un resultado satisfactorio.
+
+![wps2](images/wps2.png)
+
+Tras realizar diversas pruebas, la herramienta bully no ha sido capaz de finalizar el ataque con exito, ni por fuerza bruta ni el ataque Pixie Dust, seguramente por incapacidad de la herramienta. Por el contrario, los resultados con reaver han sido satisfactorios a excepción del ataque Pixie Dust, con lo que se podría concluir que el AP objetivo no es vulnerable a este último ataque, que consiste en capturar la comunicación y descifrar el PIN en lugar de realizar una fuerza bruta. Esto se debe principalmente a que el punto de acceso presenta medidas contra este ataque.
+
+En cuanto al resto de pruebas, en primer lugar, se selecciona la opción "*(reaver) Known PINs database based attack*", que realizará un ataque por diccionario con los posibles PINs que se observan en la Figura anterior así como los generados por los algoritmos presentes en este framework. Así se inicia el ataque, que se hará con un total de 15 PINs y con un tiempo de espera de 30 segundos para controlar posibles retrasos en la comunicación con el AP, realizando 8 intentos fallidos y consiguiendo con el PIN ’18836486’ obtener la contraseña del punto de acceso (establecida como ’neverhacked33’). La Figura a continuación muestra dichos resultados.
+
+![wps3](images/wps3.png)
+
+Adicionalmente, se guarda el resultado del ataque en un fichero de texto cuya ruta es determinada
+previa al ataque.
