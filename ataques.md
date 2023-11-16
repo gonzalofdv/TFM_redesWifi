@@ -66,6 +66,29 @@ Por último, como se ha mencionado previamente, eligiendo el ataque de fuerza br
 ![crunch](images/crunch.png)
 ## WPA2 PMKID
 
+Este ataque, es el más actual contra WPA2 y permite romper la clave sin capturar un handshake completo (tan solo con el primer paquete que incluye el PMKID), y mucho más importante, sin necesidad de una tercer dispositivo cliente al que deautenticar o esperar que se conecte, puesto que será el atacante el que solicite el emparejamiento, lo que supone una gran ventaja frente a otros ataques.
+
+![pmkiddiag](images/pmkiddiag.png)
+
+Este ataque cuenta con las mismas fases que la ruptura de handshake previamente realizada, con la diferencia de que esta vez no se capturará un handshake completo, no se realizará un ataque de deautenticación y se hará uso de la herramienta hashcat. Además, para realizarlo, se ha configurado el AP objetivo indicando el uso del protocolo WPA2 con cifrado AES.
+
+### Captura del PMKID
+
+Las acciones previas a la captura del PMKID son idénticas al ataque anterior, por lo que no se verán reflejadas. A partir de ahí, y una vez situados en el menú de captura, se selecciona la opción ’*Capture PMKID*’, que solicitará un valor de timeout de entre 10 y 100 segundos antes de iniciar la captura. Esto arrancará un nuevo terminal que realiza las acciones necesarias para capturar el primer paquete del handshake que será suficiente para intentar averiguar la clave del punto de acceso.
+
+![pmkid2](images/pmkid2.png)
+
+Una vez finalizada la captura, aparece un mensaje informando del éxito o fracaso de la acción, además de facilitar una conversión del fichero de captura para su compatibilidad con aircrack, ya que hashcat utiliza hashes para realizar el ataque y aircrack utiliza un formato de captura de red clásico (’cap' o 'pcap’), pudiendo así evitar la estricta necesidad de utilizar hashcat para la siguiente fase.
+
+### Ataque de diccionario contra PMKID
+
+Situados en el menú principal y seleccionando la opción ’*Offline WPA/WPA2 decrypt menu*’ para avanzar al siguiente menú será posible seleccionar la opción asociada al ataque por diccionario a un fichero con captura de PMKID (aunque existen otras opciones ya comentadas) para posteriormente especificar la ruta del fichero a atacar y el diccionario a utilizar (en este caso el preparado para estas pruebas) y comenzar el ataque de manera automática sin necesidad de conocer los comandos específicos de hashcat.
+
+![pmkid3](images/pmkid3.png)
+
+Así la Figura anterior refleja cómo en algo menos de dos minutos se han procesado las 100.000 líneas del diccionario elegido y se ha hallado la contraseña del AP, que se exporta a un fichero de texto con el resultado. 
+
+De igual manera, si se dispone de la captura de tráfico con el paquete PMKID capturado o se ha utilizado la conversión ofrecida durante el proceso de captura anterior, será posible realizar el ataque mediante aircrack, que en este caso ha ofrecido el resultado en un tiempo mayor al transcurrido con el uso de hashcat.
 
 ## Evil Twin
 
